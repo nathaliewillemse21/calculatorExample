@@ -2,57 +2,146 @@ body {
     background-color: whitesmoke;
 }
 
-.parent {
+ .parent {
     display: flex;
     justify-content: space-evenly;
 }
+.operators{
+    width: 25%;
+    height: 20%;
+    float: left;
+    font-family: sans-serif;
+    border-width: 0.5;
+    font-weight: bold;
+     color: plum;
+    background-color: whitesmoke;
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
 
-#header {
-    margin : 5px;
-    border-style: solid;
-    border-width: 2px;
-    padding : 5px;
-    font-family: monospace;
+}
+.numbers, .empty{
+    width: 25%;
+    height: 20%;
+    float: left;
+    font-family: sans-serif;
+    border-width: 0.5;
+    font-weight: bold;
     color : rgb(234, 13, 208);
-    text-align : center;
-} 
+    background-color: whitesmoke;
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
 
-#footer {
-    
-    margin : 5px;
-    border-style: solid;
-    border-width: 2px;
-    padding : 5px;
-    font-family: monospace;
+
+}
+.operators:active, .numbers:active {
+    font-size: medium;
+}
+
+.operators:focus, .numbers:focus, .empty:focus {
+    outline: 0;
+}
+
+.operators:hover {
     color : rgb(234, 13, 208);
-    text-align : center;
+    font-size: medium;
+}
 
-} 
+.numbers:hover {
+    color: plum;
+    font-size: medium;
+}
 
-#container {
+.operators:hover {
+    color : rgb(234, 13, 208);
+    font-size: medium;
+}
 
-    width: 100%;
-    height: 100%;
-    margin: 20px auto auto auto;
-    padding : 5px;
-    margin-bottom: 20px;
-  
+.numbers:hover {
+    color: plum;
+    font-size: medium;
+}
+.numbers , .empty {
+    width: 25%;
+    height: 20%;
+    float: left;
+    font-family: sans-serif;
+    border-width: 0.5;
+    font-weight: bold;
     
 }
 
+#header, #footer {
+    margin : 5px;
+    border-style: solid;
+    border-width: 2px;
+    padding : 5px;
+    font-family: sans-serif;
+    color : rgb(234, 13, 208);
+    text-align : center;
+} 
+
+
 #calculator {
-    width: 37%;
-    height: 520px;
+    width: 26%;
+    height: 350px;
     margin : auto;
     border-style: solid;
     border-width: 2px;
     padding : 5px;
     color : rgb(234, 13, 208);
 }
+#calculator {
+    height: 530px;
+    width: 94%;
+    margin-left: 1.4%;
+  }
+  
+
+
+#result {
+    width: 70%;
+    height: 10%;
+    margin : 4px auto auto auto;
+    border-style: solid;
+    border-width: 2px;
+    padding : 5px;
+    margin-top: 0.8%;
+    padding-left: 1%;
+    padding-right: 1%;
+    color : rgb(234, 13, 208);
+}
+
+#history {
+    margin-top: 4%;
+    height: 60%;
+    width: 100%;
+    text-align: right;
+    font-size: large;
+    font-family: sans-serif;
+}
+
+#keyboard {
+    width: 70%;
+    height: 62%;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    border-style: solid;
+    border-width: 2px;
+    padding-top: 5px;
+    padding-right: 0.5%;
+    padding-left: 0.5%;
+    padding-bottom: 5px;
+    color : rgb(234, 13, 208);
+    font-family: sans-serif;
+}
 
 @media (hover: none) and (pointer: coarse) and (orientation: portrait) {
     #calculator {
-        width: 91%;
+        width: 72%;
         margin-left: 1.4%;
         margin-right: 0.7%;
         height: 620px;
@@ -65,16 +154,6 @@ body {
     height: 530px;
     width: 94%;
     margin-left: 1.4%;
-  }
-  
- #header {
-    height: 29.833px;
-  }
-  
- #header > h1:nth-child(1) {
-    height: 17px;
-    margin-bottom: 0px;
-    margin-top: 0px;
   }
   
  #history-value {
@@ -93,131 +172,10 @@ body {
  #keyboard {
     height: 125px;
   }
+
+}
   
- #footer {
-    height: 26px;
-  }
 
- #footer > h2:nth-child(1) {
-    height: 27px;
-    margin-bottom: 0px;
-    margin-top: 0px;
-  }
-  
- #container {
-    margin-bottom: 15px;
-    margin-top: 15px;
-  }
-  
- #calculator {
-    margin-right: 0px;
-    margin-left: 15px;
-  }
-
- #calculator {
-      margin-left: 0px;
-      width: auto;
- }
-
- #container {
-    width: auto;
-  }
-}
-
-
-#result {
-    width: 97%;
-    height: 25%;
-    margin : 4px auto auto auto;
-    border-style: solid;
-    border-width: 2px;
-    padding : 5px;
-    margin-top: 0.8%;
-    padding-left: 1%;
-    padding-right: 1%;
-    color : rgb(234, 13, 208);
-}
-
-#history {
-    margin-top: 4%;
-    height: 40%;
-    width: 100%;
-    text-align: right;
-    font-size: large;
-    font-family: monospace;
-}
-
-#output {
-    
-    height: 60%;
-    width: 100%;
-    font-size: xx-large;
-    text-align: right;
-    font-family: monospace;
-}
-
-#keyboard {
-    width: 98%;
-    height: 68%;
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: auto;
-    border-style: solid;
-    border-width: 2px;
-    padding-top: 5px;
-    padding-right: 0.5%;
-    padding-left: 0.5%;
-    padding-bottom: 5px;
-    color : rgb(234, 13, 208);
-    font-family: monospace;
-}
-
-.operators, .numbers , .empty {
-    width: 25%;
-    height: 20%;
-    float: left;
-    font-family: monospace;
-    border-width: 0.5;
-    font-weight: bold;
-    
-}
-
-.operators {
-    color: plum;
-    background-color: whitesmoke;
-    font-size: large;
-    font-weight: bold;
-}
-
-.numbers, .empty {
-    color : rgb(234, 13, 208);
-    background-color: whitesmoke;
-    font-size: large;
-    font-weight: bold;
-}
-
-.operators, .numbers {
-    cursor: pointer;
-}
-
-.operators:active, .numbers:active {
-    font-size: medium;
-}
-
-.operators:focus, .numbers:focus, .empty:focus {
-    outline: 0;
-}
-
-.operators:hover {
-    color : rgb(234, 13, 208);
-    font-size: medium;
-}
-
-.numbers:hover {
-    color: plum;
-    font-size: medium;
-}
 
 .fa-twitter-square, .fa-github-square {
    color : rgb(234, 13, 208);
