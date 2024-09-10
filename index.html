@@ -4,50 +4,147 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Nathalie's Caculator</title>
- </head>
-<body>
+    <title>Nathalie's Calculator</title>
   
+</head>
+<body>
 
-    <div class id = "header">
-            <h1>Nathalie's Calculator</h1>
-        </div>
-        <form name="calculator">
-            <div id = "calculator">
-                <div id = "result">
-                    <div id = "history">
-                        <p id = "history-value"></p>
-                    </div>
-                    <div id = "output">
-                        <p id = "output-value"></p>
-                    </div>
-                </div>
-                    
-                <div id = "keyboard">
-                    <button class = "operators" id = "clear">C</button>
-                    <button class = "operators" id = "backspace">CE</button>
-                    <button class = "operators" id = "%">%</button>
-                    <button class = "operators" id = "/">&#247</button> <!-- hex code for / -->
-                    <button class = "numbers" id = "7">7</button>
-                    <button class = "numbers" id = "8">8</button>
-                    <button class = "numbers" id = "9">9</button>
-                    <button class = "operators" id = "*">&times</button> <!-- hex code for * -->
-                    <button class = "numbers" id = "4">4</button>
-                    <button class = "numbers" id = "5">5</button>
-                    <button class = "numbers" id = "6">6</button>
-                    <button class = "operators" id = "-">-</button>
-                    <button class = "numbers" id = "1">1</button>
-                    <button class = "numbers" id = "2">2</button>
-                    <button class = "numbers" id = "3">3</button>
-                    <button class = "operators" id = "+">+</button>
-                    <button class = "empty" id = "empty"></button>
-                    <button class = "numbers" id = "0">0</button>
-                    <button class = "empty" id = "empty"></button>
-                    <button class = "operators" id = "=">=</button>
-                </div>
+    <div id="header">
+        <h1>Nathalie's Calculator</h1>
+    </div>
+
+    <div id="calculator">
+        <div id="result">
+            <div id="history">
+                <p id="history-value"></p>
+            </div>
+            <div id="output">
+                <p id="output-value">0</p>
             </div>
         </div>
-    
-</body>
+        <div id="keyboard">
+            <button class="operators" id="clear">C</button>
+            <button class="operators" id="backspace">CE</button>
+            <button class="operators" id="%">%</button>
+            <button class="operators" id="/">&#247;</button>
+            <button class="numbers" id="7">7</button>
+            <button class="numbers" id="8">8</button>
+            <button class="numbers" id="9">9</button>
+            <button class="operators" id="*">&times;</button>
+            <button class="numbers" id="4">4</button>
+            <button class="numbers" id="5">5</button>
+            <button class="numbers" id="6">6</button>
+            <button class="operators" id="-">-</button>
+            <button class="numbers" id="1">1</button>
+            <button class="numbers" id="2">2</button>
+            <button class="numbers" id="3">3</button>
+            <button class="operators" id="+">+</button>
+            <button class="empty"></button>
+            <button class="numbers" id="0">0</button>
+            <button class="empty"></button>
+            <button class="operators" id="=">=</button>
+        </div>
+    </div>
+
+    <script>
+        // Declare variables for current and previous entries
+        let currentEntry = '';
+        let previousEntry = '';
+        let operator = '';
+        let result = '';
+
+        // Function to update display
+        function updateDisplay() {
+            document.getElementById('output-value').textContent = currentEntry || '0';
+            document.getElementById('history-value').textContent = previousEntry + ' ' + operator;
+        }
+
+        // Function to handle number clicks
+        function numberClick(number) {
+            currentEntry += number;
+            updateDisplay();
+        }
+
+        // Function to handle operator clicks
+        function operatorClick(op) {
+            if (currentEntry === '') return;
+            if (previousEntry === '') {
+                previousEntry = currentEntry;
+            } else {
+                calculate();
+            }
+            operator = op;
+            currentEntry = '';
+            updateDisplay();
+        }
+
+        // Function to calculate the result
+        function calculate() {
+            let prev = parseFloat(previousEntry);
+            let current = parseFloat(currentEntry);
+
+            switch (operator) {
+                case '+':
+                    result = prev + current;
+                    break;
+                case '-':
+                    result = prev - current;
+                    break;
+                case '*':
+                    result = prev * current;
+                    break;
+                case '/':
+                    result = prev / current;
+                    break;
+                case '%':
+                    result = prev % current;
+                    break;
+            }
+
+            currentEntry = result.toString();
+            operator = '';
+            previousEntry = '';
+        }
+
+        // Function to clear calculator
+        function clearCalculator() {
+            currentEntry = '';
+            previousEntry = '';
+            operator = '';
+            updateDisplay();
+        }
+
+        // Function to delete last entry (backspace)
+        function backspace() {
+            currentEntry = currentEntry.slice(0, -1);
+            updateDisplay();
+        }
+
+        // Add event listeners to buttons
+        document.querySelectorAll('.numbers').forEach(button => {
+            button.addEventListener('click', function() {
+                numberClick(this.id);
+            });
+        });
+
+        document.querySelectorAll('.operators').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.id === 'clear') {
+                    clearCalculator();
+                } else if (this.id === 'backspace') {
+                    backspace();
+                } else if (this.id === '=') {
+                    calculate();
+                    updateDisplay();
+                } else {
+                    operatorClick(this.id);
+                }
+            });
+        });
+
+        // Initial display setup
+        updateDisplay();
+
+    </script>
 </body>
 </html>
